@@ -13,7 +13,7 @@
 	</main>
 
 	<footer class="mt-16 border-t border-line bg-panel">
-		<div class="mx-auto max-w-5xl px-4 py-10">
+		<div class="mx-auto max-w-7xl px-4 py-10">
 			<div class="flex items-baseline gap-1.5">
 				<span class="font-display text-[17px] text-ink">obscurio</span>
 				<span

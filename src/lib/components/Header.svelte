@@ -12,7 +12,7 @@
 </script>
 
 <header class="sticky top-0 z-40 border-b border-line bg-page/95 backdrop-blur-sm">
-	<div class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
+	<div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3">
 		<div class="flex items-center gap-3">
 			<button
 				type="button"
@@ -64,7 +64,7 @@
 
 	{#if menuOpen}
 		<nav class="border-t border-line-ghost bg-panel">
-			<div class="mx-auto max-w-5xl px-4 py-3">
+			<div class="mx-auto max-w-7xl px-4 py-3">
 				<p class="font-label mb-2">Browse the shop</p>
 				<ul class="m-0 flex list-none flex-col p-0">
 					{#each navLinks as link (link.href)}

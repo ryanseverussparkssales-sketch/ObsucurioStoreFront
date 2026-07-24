@@ -17,7 +17,7 @@
 	/>
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-4">
+<div class="mx-auto max-w-7xl px-4">
 	<!-- Search -->
 	<div class="pt-4">
 		<SearchBar />

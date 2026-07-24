@@ -26,7 +26,7 @@
 	<title>{product.title} — Obscurio Books</title>
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-4">
+<div class="mx-auto max-w-7xl px-4">
 	<nav class="pt-4 text-[11px] text-ink-faint" aria-label="Breadcrumb">
 		<a href="/" class="text-ink-faint no-underline hover:text-ink-muted">Home</a>
 		<span class="mx-1.5">/</span>

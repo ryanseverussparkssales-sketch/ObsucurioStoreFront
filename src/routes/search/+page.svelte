@@ -10,7 +10,7 @@
 	<title>{data.q ? `"${data.q}" — Search` : 'Search'} — Obscurio Books</title>
 </svelte:head>
 
-<div class="mx-auto max-w-5xl px-4">
+<div class="mx-auto max-w-7xl px-4">
 	<div class="pt-4">
 		<SearchBar />
 	</div>
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 	{:else if data.products.length}
-		<div class="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
+		<div class="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 			{#each data.products as product (product.handle)}
 				<ProductCard {product} fluid />
 			{/each}
