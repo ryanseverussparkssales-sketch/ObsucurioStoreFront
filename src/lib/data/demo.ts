@@ -13,8 +13,8 @@ export const DEMO_HOME: HomeData = {
 	hero: {
 		title: "Curator's Choice",
 		subtitle: 'Hand-picked books and studio finds',
-		linkText: 'Browse the featured shelf',
-		href: '/collections/featured',
+		linkText: 'Browse the collection',
+		href: '/collections/books',
 		images: [
 			`${cdn}/9780765311788-HD.jpg?v=1781553231`,
 			`${cdn}/9780765376671-HD.jpg?v=1781590283`,
@@ -89,6 +89,9 @@ export const DEMO_COLLECTION_TITLES: Record<string, { title: string; description
 	romantasy: { title: 'Romantasy', description: 'Fantasy with the romance turned all the way up.' },
 	'sci-fi': { title: 'Sci-Fi', description: 'Space, machines, and futures near and far.' },
 	classics: { title: 'Classics', description: 'The canon, and the strange corners of it.' },
+	'tabletop-role-playing': { title: 'Tabletop Role-Playing', description: 'Rulebooks, settings, and screens for the table.' },
+	'board-games': { title: 'Board Games', description: 'Sealed boxes and out-of-print finds.' },
+	collectibles: { title: 'Collectibles', description: 'Pins, playmats, deck boxes, and curiosities.' },
 	'art-supplies-oddities': { title: "The Maker's Shelf", description: 'Candles, art sets, and curios from the studio.' },
 	candles: { title: 'Candles', description: 'Small-batch scents and travel tins.' },
 	'make-it-yourself': { title: 'Make It Yourself', description: 'Craft kits for slow evenings.' },

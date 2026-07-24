@@ -63,29 +63,16 @@ const SHELVES: Array<{ handle: string; title: string; subtitle: string }> = [
 	{ handle: 'books', title: 'Bestsellers', subtitle: "This year's most-read titles" },
 	{ handle: 'epic-fantasy', title: 'Epic Fantasy', subtitle: 'Doorstoppers worth the wrist ache' },
 	{ handle: 'romantasy', title: 'Romantasy', subtitle: 'Court intrigue and slow burns' },
+	{ handle: 'tabletop-role-playing', title: 'Tabletop Role-Playing', subtitle: 'Rulebooks, settings, and screens' },
+	{ handle: 'board-games', title: 'Board Games', subtitle: 'Sealed boxes and out-of-print finds' },
+	{ handle: 'collectibles', title: 'Collectibles', subtitle: 'Pins, playmats, and curiosities' },
 	{ handle: 'art-supplies-oddities', title: "The Maker's Shelf", subtitle: 'Candles, art sets, and curios from the studio' }
 ];
 
-const HERO_COLLECTION = 'featured';
+// Collage source for the hero — books always has stock, so it never looks thin.
+const HERO_COLLECTION = 'books';
 
-const HOME_QUERY = /* GraphQL */ `
-	query HomePage($hero: String!, $h0: String!, $h1: String!, $h2: String!, $h3: String!) {
-		hero: collection(handle: $hero) {
-			...ShelfFields
-		}
-		s0: collection(handle: $h0) {
-			...ShelfFields
-		}
-		s1: collection(handle: $h1) {
-			...ShelfFields
-		}
-		s2: collection(handle: $h2) {
-			...ShelfFields
-		}
-		s3: collection(handle: $h3) {
-			...ShelfFields
-		}
-	}
+const SHELF_FRAGMENT = /* GraphQL */ `
 	fragment ShelfFields on Collection {
 		handle
 		title
@@ -126,13 +113,6 @@ interface GqlShelf {
 	title: string;
 	products: { nodes: GqlProduct[] };
 }
-interface HomeQueryResult {
-	hero: GqlShelf | null;
-	s0: GqlShelf | null;
-	s1: GqlShelf | null;
-	s2: GqlShelf | null;
-	s3: GqlShelf | null;
-}
 
 function toCard(p: GqlProduct): ProductCard {
 	const price = Number(p.priceRange.minVariantPrice.amount);
@@ -149,21 +129,27 @@ function toCard(p: GqlProduct): ProductCard {
 }
 
 export async function getHomeData(fetcher: typeof fetch): Promise<HomeData> {
-	try {
-		const data = await storefront<HomeQueryResult>(fetcher, HOME_QUERY, {
-			hero: HERO_COLLECTION,
-			h0: SHELVES[0].handle,
-			h1: SHELVES[1].handle,
-			h2: SHELVES[2].handle,
-			h3: SHELVES[3].handle
-		});
+	// Build one query with an alias per shelf, so the shelf list stays data-driven.
+	// Handles are our own trusted constants — safe to inline.
+	const aliases = SHELVES.map(
+		(s, i) => `s${i}: collection(handle: "${s.handle}") { ...ShelfFields }`
+	).join('\n\t\t\t');
+	const query = /* GraphQL */ `
+		query HomePage {
+			hero: collection(handle: "${HERO_COLLECTION}") { ...ShelfFields }
+			${aliases}
+		}
+		${SHELF_FRAGMENT}
+	`;
 
-		const rawShelves = [data.s0, data.s1, data.s2, data.s3];
+	try {
+		const data = await storefront<Record<string, GqlShelf | null>>(fetcher, query);
+
 		const shelves: HomeShelf[] = SHELVES.map((meta, i) => ({
 			handle: meta.handle,
 			title: meta.title,
 			subtitle: meta.subtitle,
-			products: (rawShelves[i]?.products.nodes ?? []).map(toCard)
+			products: (data[`s${i}`]?.products.nodes ?? []).map(toCard)
 		})).filter((s) => s.products.length > 0);
 
 		const heroImages = (data.hero?.products.nodes ?? [])
@@ -174,9 +160,9 @@ export async function getHomeData(fetcher: typeof fetch): Promise<HomeData> {
 		return {
 			hero: {
 				title: "Curator's Choice",
-				subtitle: `${data.hero?.products.nodes.length ?? 0} featured curiosities, chosen by hand`,
-				linkText: 'Browse the featured shelf',
-				href: '/collections/featured',
+				subtitle: 'Hand-picked books and studio finds',
+				linkText: 'Browse the collection',
+				href: '/collections/books',
 				images: heroImages.length ? heroImages : DEMO_HOME.hero.images
 			},
 			shelves: shelves.length ? shelves : DEMO_HOME.shelves,
