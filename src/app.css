@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Edelhaus Design System — Obscurio Books storefront
+   Display: Bodoni* by indestructible type* (SIL OFL, self-hosted /static/fonts/)
+   Fallback: Playfair Display · Labels: Cormorant SC · UI: Inter
+   Ported from the LeadOS system — same surfaces, borders, brass accent.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+	font-family: 'Bodoni*';
+	font-weight: 300 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/Bodoni-Book.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Bodoni*';
+	font-weight: 300 400;
+	font-style: italic;
+	font-display: swap;
+	src: url('/fonts/Bodoni-BookItalic.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Bodoni*';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/Bodoni-Bold.otf') format('opentype');
+}
+
+:root {
+	/* ── Surfaces ── */
+	--c-page: #000000;
+	--c-panel: #080808;
+	--c-card: #0f0f0f;
+	--c-input: #141414;
+	--c-raised: #1c1c1c;
+
+	/* ── Borders ── */
+	--c-border-ghost: #0d0d0d;
+	--c-border: #1a1a1a;
+	--c-border-subtle: #262626;
+	--c-border-focus: #ffffff;
+
+	/* ── Text ── */
+	--c-text-primary: #ffffff;
+	--c-text-secondary: #999999;
+	--c-text-muted: #8a8a8a;
+	--c-text-faint: #4a4a4a;
+	--c-text-ghost: #1e1e1e;
+
+	/* ── Signature brass + crimson ── */
+	--accent: #c8a24a;
+	--accent-hi: #d4af37;
+	--accent-ink: #1a1408;
+	--crimson: #a01e2e;
+	--crimson-hi: #b6293b;
+	--crimson-text: #c24a59;
+
+	/* ── Typography ── */
+	--font-display: 'Bodoni*', 'Playfair Display', Georgia, serif;
+	--font-label: 'Cormorant SC', 'Cormorant', Georgia, serif;
+	--font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+
+	/* ── Type scale ── */
+	--text-hero: 34px;
+	--text-title: 22px;
+	--text-head: 16px;
+	--text-body: 13px;
+	--text-meta: 11px;
+	--text-label: 10px;
+
+	/* ── Radius ── */
+	--r-sm: 6px;
+	--r-md: 10px;
+	--r-lg: 14px;
+
+	/* ── Motion ── */
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur-fast: 120ms;
+	--dur-mid: 200ms;
+}
+
+@theme {
+	--color-page: #000000;
+	--color-panel: #080808;
+	--color-card: #0f0f0f;
+	--color-input: #141414;
+	--color-raised: #1c1c1c;
+	--color-line-ghost: #0d0d0d;
+	--color-line: #1a1a1a;
+	--color-line-subtle: #262626;
+	--color-ink: #ffffff;
+	--color-ink-secondary: #999999;
+	--color-ink-muted: #8a8a8a;
+	--color-ink-faint: #4a4a4a;
+	--color-brass: #c8a24a;
+	--color-brass-hi: #d4af37;
+	--color-brass-ink: #1a1408;
+	--color-crimson: #a01e2e;
+	--color-crimson-hi: #b6293b;
+	--color-crimson-text: #c24a59;
+
+	--font-display: 'Bodoni*', 'Playfair Display', Georgia, serif;
+	--font-label: 'Cormorant SC', Georgia, serif;
+	--font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Base ── */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	background-color: var(--c-page);
+	color: var(--c-text-primary);
+	font-family: var(--font-ui);
+	font-size: var(--text-body);
+	line-height: 1.5;
+}
+
+/* ── Typography utilities ── */
+.font-display {
+	font-family: var(--font-display);
+	font-weight: 300;
+	letter-spacing: -0.01em;
+}
+.font-display-italic {
+	font-family: var(--font-display);
+	font-weight: 300;
+	font-style: italic;
+	letter-spacing: -0.01em;
+}
+.font-label {
+	font-family: var(--font-label);
+	font-weight: 400;
+	font-size: var(--text-label);
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--c-text-faint);
+}
+.tabular-nums {
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.02em;
+}
+
+/* ── Horizontal scroll rails (carousels) ── */
+.rail {
+	display: flex;
+	gap: 12px;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+	padding-bottom: 4px;
+	scrollbar-width: none;
+}
+.rail::-webkit-scrollbar {
+	display: none;
+}
+.rail > * {
+	scroll-snap-align: start;
+	flex-shrink: 0;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+	width: 3px;
+	height: 3px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--c-raised);
+	border-radius: 2px;
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+	outline: 1px solid var(--c-border-subtle);
+	outline-offset: 2px;
+}
