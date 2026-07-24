@@ -28,9 +28,9 @@
 			</p>
 			<div class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
 				<a href="/collections/books" class="text-[11px] text-ink-muted no-underline hover:text-ink">Books</a>
-				<a href="/collections/occult" class="text-[11px] text-ink-muted no-underline hover:text-ink">Occult</a>
-				<a href="/collections/open-source-tech" class="text-[11px] text-ink-muted no-underline hover:text-ink">Reading Tech</a>
-				<a href="/collections/decor" class="text-[11px] text-ink-muted no-underline hover:text-ink">Decor</a>
+				<a href="/collections/epic-fantasy" class="text-[11px] text-ink-muted no-underline hover:text-ink">Epic Fantasy</a>
+				<a href="/collections/romantasy" class="text-[11px] text-ink-muted no-underline hover:text-ink">Romantasy</a>
+				<a href="/collections/art-supplies-oddities" class="text-[11px] text-ink-muted no-underline hover:text-ink">The Maker's Shelf</a>
 			</div>
 			<p class="font-label mt-8">© 2026 Obscurio Books</p>
 		</div>

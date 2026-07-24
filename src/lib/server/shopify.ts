@@ -1,5 +1,4 @@
 import { env } from '$env/dynamic/private';
-import { env as publicEnv } from '$env/dynamic/public';
 import type {
 	CartInfo,
 	CollectionPage,
@@ -19,9 +18,9 @@ import {
 /**
  * Shopify Storefront API client.
  *
- * Env (see .env.example):
- *   PUBLIC_SHOPIFY_STORE_DOMAIN  e.g. vercel-store-a45cd659.myshopify.com
- *   SHOPIFY_STOREFRONT_TOKEN     Storefront API access token (NOT the Admin token)
+ * Env (see .env.example) — matches the names the store already uses:
+ *   SHOPIFY_STORE_DOMAIN            e.g. vercel-store-a45cd659.myshopify.com
+ *   SHOPIFY_STOREFRONT_ACCESS_TOKEN Storefront API access token (NOT the Admin token)
  *
  * When the token is missing or the API errors, we fall back to the baked-in
  * demo snapshot (real Obscurio catalog data) so the site always renders.
@@ -34,8 +33,8 @@ async function storefront<T>(
 	query: string,
 	variables: Record<string, unknown> = {}
 ): Promise<T> {
-	const domain = publicEnv.PUBLIC_SHOPIFY_STORE_DOMAIN;
-	const token = env.SHOPIFY_STOREFRONT_TOKEN;
+	const domain = env.SHOPIFY_STORE_DOMAIN;
+	const token = env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 	if (!domain || !token) throw new Error('storefront-not-configured');
 
 	const res = await fetcher(`https://${domain}/api/${API_VERSION}/graphql.json`, {
@@ -62,9 +61,9 @@ async function storefront<T>(
 // Shelves shown on the homepage, in order. Handles are real collections.
 const SHELVES: Array<{ handle: string; title: string; subtitle: string }> = [
 	{ handle: 'books', title: 'Bestsellers', subtitle: "This year's most-read titles" },
-	{ handle: 'occult', title: 'Tarot & Divination', subtitle: 'Decks, pendulums, and quiet rituals' },
-	{ handle: 'open-source-tech', title: 'Reading Tech', subtitle: 'E-readers and open hardware for readers' },
-	{ handle: 'decor', title: 'The Reading Nook', subtitle: 'Lamps, lights, and cozy corners' }
+	{ handle: 'epic-fantasy', title: 'Epic Fantasy', subtitle: 'Doorstoppers worth the wrist ache' },
+	{ handle: 'romantasy', title: 'Romantasy', subtitle: 'Court intrigue and slow burns' },
+	{ handle: 'art-supplies-oddities', title: "The Maker's Shelf", subtitle: 'Candles, art sets, and curios from the studio' }
 ];
 
 const HERO_COLLECTION = 'featured';

@@ -1,10 +1,10 @@
 import type { HomeData, ProductCard } from '$lib/types';
 
 /**
- * Snapshot of the real Obscurio Books catalog (pulled 2026-07-23 via Admin API).
- * Used as a fallback so the homepage renders before the Storefront API token
- * is configured — swap-free: once SHOPIFY_STOREFRONT_TOKEN is set, live data
- * takes over automatically.
+ * Snapshot of the real Obscurio Books catalog (refreshed 2026-07-23, post
+ * dropship-archive). Used as a fallback so the homepage renders before the
+ * Storefront API token is wired — once SHOPIFY_STOREFRONT_ACCESS_TOKEN is set,
+ * live data takes over automatically. Only kept (non-archived) products appear.
  */
 
 const cdn = 'https://cdn.shopify.com/s/files/1/0766/1328/8128/files';
@@ -12,14 +12,14 @@ const cdn = 'https://cdn.shopify.com/s/files/1/0766/1328/8128/files';
 export const DEMO_HOME: HomeData = {
 	hero: {
 		title: "Curator's Choice",
-		subtitle: '8 featured curiosities, chosen by hand',
+		subtitle: 'Hand-picked books and studio finds',
 		linkText: 'Browse the featured shelf',
 		href: '/collections/featured',
 		images: [
 			`${cdn}/9780765311788-HD.jpg?v=1781553231`,
-			`${cdn}/87fa059f4c0ebe42c8a58148f7d3.jpg?v=1781551767`,
-			`${cdn}/9741757520180_.pic_hd.jpg?v=1781556200`,
-			`${cdn}/8b4927034770a6b04b9e9738102b.png?v=1781551864`
+			`${cdn}/9780765376671-HD.jpg?v=1781590283`,
+			`${cdn}/9781635574043-HD.jpg?v=1781595098`,
+			`${cdn}/16071dfb66dd87576b0830f85a128bd6.jpg?v=1781840750`
 		]
 	},
 	shelves: [
@@ -33,46 +33,47 @@ export const DEMO_HOME: HomeData = {
 				{ handle: 'the-fellowship-of-the-ring-the-lord-of-the-rings-part-one', title: 'The Fellowship of the Ring', vendor: 'J. R. R. Tolkien', price: '8.99', compareAt: null, image: `${cdn}/9780345339706-HD.jpg?v=1781590253` },
 				{ handle: 'red-rising', title: 'Red Rising', vendor: 'Pierce Brown', price: '18.00', compareAt: null, image: `${cdn}/9780345539809-HD.jpg?v=1781590263` },
 				{ handle: 'the-name-of-the-wind', title: 'The Name of the Wind', vendor: 'Patrick Rothfuss', price: '10.99', compareAt: null, image: `${cdn}/9780756404741-HD.jpg?v=1781590272` },
-				{ handle: 'a-storm-of-swords', title: 'A Storm of Swords', vendor: 'George R. R. Martin', price: '10.99', compareAt: null, image: `${cdn}/9780553573428-HD.jpg?v=1781590267` },
-				{ handle: 'a-clash-of-kings', title: 'A Clash of Kings', vendor: 'George R. R. Martin', price: '10.99', compareAt: null, image: `${cdn}/9780553579901-HD.jpg?v=1781590270` },
+				{ handle: 'the-poppy-war', title: 'The Poppy War', vendor: 'R. F. Kuang', price: '22.00', compareAt: null, image: `${cdn}/9780062662583-HD.jpg?v=1781594792` },
+				{ handle: 'ready-player-one', title: 'Ready Player One', vendor: 'Ernest Cline', price: '20.00', compareAt: null, image: `${cdn}/9780307887443-HD.jpg?v=1781590582` },
 				{ handle: 'the-wise-mans-fear', title: "The Wise Man's Fear", vendor: 'Patrick Rothfuss', price: '11.99', compareAt: null, image: `${cdn}/9780756407919-HD.jpg?v=1781590277` }
 			]
 		},
 		{
-			handle: 'occult',
-			title: 'Tarot & Divination',
-			subtitle: 'Decks, pendulums, and quiet rituals',
+			handle: 'epic-fantasy',
+			title: 'Epic Fantasy',
+			subtitle: 'Doorstoppers worth the wrist ache',
 			products: [
-				{ handle: 'kledery-tarot-cards-for-beginners-classic-tarot-cards-with-meanings-on-them-durable-tarot-cards-with-guide-book-for-beginners-black', title: "Beginner's Tarot Deck — Waite-Smith", vendor: 'Obscurio Books', price: '59.00', compareAt: null, image: `${cdn}/87fa059f4c0ebe42c8a58148f7d3.jpg?v=1781551767` },
-				{ handle: 'knana-tarot-divination-kit-pendulum-board-astro-dice', title: 'Tarot Divination Kit — Pendulum & Astro Dice', vendor: 'Obscurio Books', price: '79.00', compareAt: null, image: `${cdn}/3055b3ca4ccea2f102f67abf26b3.jpg?v=1781551826` },
-				{ handle: 'wyspell-beginner-tarot-with-guidebook', title: 'Wyspell Beginner Tarot with Guidebook', vendor: 'Obscurio Books', price: '89.00', compareAt: null, image: `${cdn}/ff2dab674a84bc531976e1859659.jpg?v=1781551808` },
-				{ handle: 'lunar-phase-embossed-tarot-case', title: 'Lunar Phase Embossed Tarot Case', vendor: 'Obscurio Books', price: '75.00', compareAt: null, image: `${cdn}/64f597fd4fe6b3dcfc9fc3fe324b.jpg?v=1781551836` },
-				{ handle: 'mystic-tarot-psychedelic-tapestry', title: 'Mystic Tarot Psychedelic Tapestry', vendor: 'Obscurio Books', price: '29.00', compareAt: null, image: `${cdn}/8387aa5f49c8af255e353d7868a7.webp?v=1781551742` },
-				{ handle: 'travel-candle-with-matches-pomme-cider', title: 'Travel Candle — Pomme Cider', vendor: 'Obscurio Books', price: '22.99', compareAt: null, image: `${cdn}/58f0d46d4a49a76613cdd7429c61.png?v=1781568922` }
+				{ handle: 'the-way-of-kings-book-one-of-the-stormlight-archive', title: 'The Way of Kings', vendor: 'Brandon Sanderson', price: '25.99', compareAt: null, image: `${cdn}/9780765376671-HD.jpg?v=1781590283` },
+				{ handle: 'words-of-radiance-book-two-of-the-stormlight-archive', title: 'Words of Radiance', vendor: 'Brandon Sanderson', price: '27.99', compareAt: null, image: `${cdn}/9781250166531-HD.jpg?v=1781590286` },
+				{ handle: 'oathbringer-book-three-of-the-stormlight-archive', title: 'Oathbringer', vendor: 'Brandon Sanderson', price: '29.99', compareAt: null, image: `${cdn}/9781250297143-HD.jpg?v=1781590290` },
+				{ handle: 'wind-and-truth-book-five-of-the-stormlight-archive', title: 'Wind and Truth', vendor: 'Brandon Sanderson', price: '39.99', compareAt: null, image: `${cdn}/9781250319180-HD.jpg?v=1781590295` },
+				{ handle: 'elantris-a-cosmere-novel', title: 'Elantris', vendor: 'Brandon Sanderson', price: '11.99', compareAt: null, image: `${cdn}/9780765350374-HD.jpg?v=1781595048` },
+				{ handle: 'warbreaker-a-cosmere-novel', title: 'Warbreaker', vendor: 'Brandon Sanderson', price: '11.99', compareAt: null, image: `${cdn}/9780765360038-HD.jpg?v=1781595051` }
 			]
 		},
 		{
-			handle: 'open-source-tech',
-			title: 'Reading Tech',
-			subtitle: 'E-readers and open hardware for readers',
+			handle: 'romantasy',
+			title: 'Romantasy',
+			subtitle: 'Court intrigue and slow burns',
 			products: [
-				{ handle: 'xteink-x4-pocket-e-reader-developer-edition-space-black', title: 'XTEINK X4 Pocket E-Reader — Dev Edition', vendor: 'XTEINK', price: '69.00', compareAt: null, image: `${cdn}/9741757520180_.pic_hd.jpg?v=1781556200` },
-				{ handle: 'xteink-x3-pocket-e-reader-developer-edition', title: 'XTEINK X3 Pocket E-Reader — Dev Edition', vendor: 'XTEINK', price: '79.00', compareAt: null, image: `${cdn}/3_23c30e7f-e418-4f98-b591-4605ebd516a6.jpg?v=1781556210` },
-				{ handle: 'lenovo-tab-m9-9-hd-64gb-wifi-mediatek-helio-g80-tablet-android-12-with-b-n-nook-hd-e-reader-renewed', title: 'Lenovo Tab M9 with Nook E-Reader', vendor: 'Obscurio Books', price: '349.00', compareAt: null, image: `${cdn}/ae7e74fa4f529301335b78e5e657.jpg?v=1781551678` },
-				{ handle: 'mp3-player-music-player-with-32gb-micro-sd-card-earphonebuild-in-speaker-photo-video-play-fm-radio-voice-recorder-e-book-reader-supports-up-to-128gb-for-kidsrunningwalking', title: 'Pocket MP3 Player — 32GB, FM & Recorder', vendor: 'Obscurio Books', price: '119.00', compareAt: null, image: `${cdn}/70539c89427da13b5d8a9eff6d47.jpg?v=1781551649` },
-				{ handle: 'vintage-capture-mini-camera', title: 'Retro Mini Camera — 1080p Pocket Cam', vendor: 'Obscurio Books', price: '69.00', compareAt: null, image: `${cdn}/8eff04c24b298ac200ab38c7919c.jpg?v=1781551600` }
+				{ handle: 'house-of-earth-and-blood', title: 'House of Earth and Blood', vendor: 'Sarah J. Maas', price: '32.00', compareAt: null, image: `${cdn}/9781635574043-HD.jpg?v=1781595098` },
+				{ handle: 'house-of-sky-and-breath', title: 'House of Sky and Breath', vendor: 'Sarah J. Maas', price: '19.00', compareAt: null, image: `${cdn}/9781639731756-HD.jpg?v=1781595131` },
+				{ handle: 'house-of-flame-and-shadow', title: 'House of Flame and Shadow', vendor: 'Sarah J. Maas', price: '32.00', compareAt: null, image: `${cdn}/9781635574104-HD.jpg?v=1781595101` },
+				{ handle: 'heir-of-fire', title: 'Heir of Fire', vendor: 'Sarah J. Maas', price: '19.00', compareAt: null, image: `${cdn}/9781639730995-HD.jpg?v=1781595113` },
+				{ handle: 'queen-of-shadows', title: 'Queen of Shadows', vendor: 'Sarah J. Maas', price: '19.00', compareAt: null, image: `${cdn}/9781639731015-HD.jpg?v=1781595116` },
+				{ handle: 'kingdom-of-ash', title: 'Kingdom of Ash', vendor: 'Sarah J. Maas', price: '21.00', compareAt: null, image: `${cdn}/9781639731077-HD.jpg?v=1781595125` }
 			]
 		},
 		{
-			handle: 'decor',
-			title: 'The Reading Nook',
-			subtitle: 'Lamps, lights, and cozy corners',
+			handle: 'art-supplies-oddities',
+			title: "The Maker's Shelf",
+			subtitle: 'Candles, art sets, and curios from the studio',
 			products: [
-				{ handle: 'vintage-books-table-lamp', title: 'Vintage Books Table Lamp', vendor: 'Obscurio Books', price: '65.00', compareAt: null, image: `${cdn}/8b4927034770a6b04b9e9738102b.png?v=1781551864` },
+				{ handle: 'vibrant-172-piece-colored-pencil-set-perfect-for-adult-coloring-drawing-and-crafting-with-metallic-shades', title: '172 Colored Pencils with Metallics', vendor: 'Obscurio Books', price: '41.11', compareAt: null, image: `${cdn}/172-Colored-Pencils-Shuttle-Art-Soft-Core-Color-Pencil-Set-for-Adult-Coloring-Books-Artist-Drawing-Sketching-Crafting_d1cbc1e8-f506-45b6-b9fe-92b672cb712a.f395bca36e02af3b7281a772c85e.jpg?v=1781821004` },
+				{ handle: '120-colored-pencils-set', title: '120 Colored Pencils in Presentation Tin', vendor: 'Obscurio Books', price: '80.71', compareAt: null, image: `${cdn}/16071dfb66dd87576b0830f85a128bd6.jpg?v=1781840750` },
+				{ handle: '162-piece-mega-wood-box-artist-kit-with-painting-drawing-art-supplies-for-adults-24-each-watercolors-oil-pastels-pencils-60-crayons-2-brushes-art-kit-for-adults-gift-set', title: '162-Piece Mega Art Set in Wood Box', vendor: 'Obscurio Books', price: '74.52', compareAt: null, image: `${cdn}/46a4eeac6d08f20102b55e986bd04e34.jpg?v=1781840750` },
 				{ handle: 'reading-light-with-stand', title: 'Reading Light with Stand', vendor: 'Obscurio Books', price: '49.99', compareAt: null, image: `${cdn}/c8c8a15b4c76b2d5760c3f16db84.jpg?v=1781559143` },
-				{ handle: 'wireless-magnetic-led-reading-light', title: 'Wireless Magnetic LED Reading Light', vendor: 'Obscurio Books', price: '24.99', compareAt: null, image: `${cdn}/0a78862f49c5a90e7d5bf9234698.png?v=1781559205` },
-				{ handle: 'lazy-periscope-horizontal-reading-glasses', title: 'Lazy Periscope Reading Glasses', vendor: 'Obscurio Books', price: '19.99', compareAt: null, image: `${cdn}/2084d66c431cab6cc65ee756219a.png?v=1781559183` },
-				{ handle: 'thick-pulp-watercolor-book', title: 'Thick Pulp Watercolor Book', vendor: 'Obscurio Books', price: '18.99', compareAt: null, image: `${cdn}/9b90a58d4319a909ab336d1e843c.png?v=1781559270` }
+				{ handle: 'travel-candle-with-matches-pomme-cider', title: 'Travel Candle — Pomme Cider', vendor: 'Obscurio Books', price: '22.99', compareAt: null, image: `${cdn}/58f0d46d4a49a76613cdd7429c61.png?v=1781568922` }
 			]
 		}
 	],
@@ -84,10 +85,12 @@ export const DEMO_HOME: HomeData = {
 /** Titles for collections we know about, for fallback PLP headers. */
 export const DEMO_COLLECTION_TITLES: Record<string, { title: string; description: string }> = {
 	books: { title: 'Books', description: 'Fantasy, sci-fi, classics, and the strange in between.' },
-	occult: { title: 'Occult', description: 'Tarot, divination, candles, and quiet rituals.' },
-	'open-source-tech': { title: 'Open Source Tech', description: 'E-readers and open hardware for readers.' },
-	decor: { title: 'Decor', description: 'Lamps, lights, and cozy corners.' },
-	'art-supplies-oddities': { title: 'Art Supplies & Oddities', description: 'Tools for making, and things with no explanation.' },
+	'epic-fantasy': { title: 'Epic Fantasy', description: 'Sprawling worlds and doorstopper sagas.' },
+	romantasy: { title: 'Romantasy', description: 'Fantasy with the romance turned all the way up.' },
+	'sci-fi': { title: 'Sci-Fi', description: 'Space, machines, and futures near and far.' },
+	classics: { title: 'Classics', description: 'The canon, and the strange corners of it.' },
+	'art-supplies-oddities': { title: "The Maker's Shelf", description: 'Candles, art sets, and curios from the studio.' },
+	candles: { title: 'Candles', description: 'Small-batch scents and travel tins.' },
 	'make-it-yourself': { title: 'Make It Yourself', description: 'Craft kits for slow evenings.' },
 	featured: { title: 'Featured', description: 'Curiosities chosen by hand.' }
 };

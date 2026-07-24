@@ -38,8 +38,11 @@ vercel --prod        # first deploy
 
 | Name | Value | Notes |
 |------|-------|-------|
-| `PUBLIC_SHOPIFY_STORE_DOMAIN` | `vercel-store-a45cd659.myshopify.com` | your `.myshopify.com` domain |
-| `SHOPIFY_STOREFRONT_TOKEN` | *(your token)* | **Storefront** API access token, not the Admin one |
+| `SHOPIFY_STORE_DOMAIN` | `vercel-store-a45cd659.myshopify.com` | your `.myshopify.com` domain |
+| `SHOPIFY_STOREFRONT_ACCESS_TOKEN` | *(your token)* | **Storefront** API access token, not the Admin one |
+
+These are the same variable names the v0 build used, so if the project already
+has them set, nothing to change — just redeploy.
 
 ### Getting the Storefront token
 

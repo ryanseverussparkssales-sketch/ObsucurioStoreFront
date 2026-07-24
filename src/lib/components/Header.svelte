@@ -2,12 +2,12 @@
 	let menuOpen: boolean = $state(false);
 
 	const navLinks: Array<{ label: string; href: string }> = [
-		{ label: 'Books', href: '/collections/books' },
-		{ label: 'Occult', href: '/collections/occult' },
-		{ label: 'Reading Tech', href: '/collections/open-source-tech' },
-		{ label: 'Decor', href: '/collections/decor' },
-		{ label: 'Art & Oddities', href: '/collections/art-supplies-oddities' },
-		{ label: 'Make It Yourself', href: '/collections/make-it-yourself' }
+		{ label: 'All Books', href: '/collections/books' },
+		{ label: 'Epic Fantasy', href: '/collections/epic-fantasy' },
+		{ label: 'Romantasy', href: '/collections/romantasy' },
+		{ label: 'Sci-Fi', href: '/collections/sci-fi' },
+		{ label: "The Maker's Shelf", href: '/collections/art-supplies-oddities' },
+		{ label: 'Candles', href: '/collections/candles' }
 	];
 </script>
 

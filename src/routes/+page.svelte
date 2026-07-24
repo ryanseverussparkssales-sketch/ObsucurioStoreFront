@@ -38,15 +38,15 @@
 		/>
 		<PromoBanner
 			variant="card"
-			title="Summer Grimoire Sale"
-			subtitle="Save up to 20% on eligible oddities"
+			title="Summer Reading Sale"
+			subtitle="Save up to 20% on eligible titles"
 			href="/collections/featured"
 		/>
 		<PromoBanner
 			variant="crimson"
-			title="Occult & Oddities"
-			subtitle="Shop rare and curious things"
-			href="/collections/occult"
+			title="The Maker's Shelf"
+			subtitle="Candles, art sets & curios"
+			href="/collections/art-supplies-oddities"
 		/>
 	</div>
 
