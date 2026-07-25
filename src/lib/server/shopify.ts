@@ -60,6 +60,7 @@ async function storefront<T>(
 
 // Shelves shown on the homepage, in order. Handles are real collections.
 const SHELVES: Array<{ handle: string; title: string; subtitle: string }> = [
+	{ handle: 'cyberpunk-red', title: 'Featured: Cyberpunk RED', subtitle: 'Night City is back — Edgerunners returns this fall' },
 	{ handle: 'books', title: 'Bestsellers', subtitle: "This year's most-read titles" },
 	{ handle: 'epic-fantasy', title: 'Epic Fantasy', subtitle: 'Doorstoppers worth the wrist ache' },
 	{ handle: 'romantasy', title: 'Romantasy', subtitle: 'Court intrigue and slow burns' },
