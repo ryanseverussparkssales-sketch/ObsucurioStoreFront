@@ -6,6 +6,9 @@
 		{ label: 'Epic Fantasy', href: '/collections/epic-fantasy' },
 		{ label: 'Romantasy', href: '/collections/romantasy' },
 		{ label: 'Sci-Fi', href: '/collections/sci-fi' },
+		{ label: 'Tabletop RPGs', href: '/collections/tabletop-role-playing' },
+		{ label: 'Board Games', href: '/collections/board-games' },
+		{ label: 'Collectibles', href: '/collections/collectibles' },
 		{ label: "The Maker's Shelf", href: '/collections/art-supplies-oddities' },
 		{ label: 'Candles', href: '/collections/candles' }
 	];
